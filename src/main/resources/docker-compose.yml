@@ -1,0 +1,26 @@
+version: "3"
+services:
+  bfb_database:
+    image: mongo:latest
+    container_name: "bfb_database"
+    ports:
+      - "21017:21017"
+    networks:
+      - bfb-network
+
+  bfb:
+    image: bfb
+    container_name: bfb
+    ports:
+      - "8080:8080"
+    networks:
+      - bfb-network
+    depends_on:
+      - bfb_database
+    environment:
+      - SPRING_DATA_MONGODB_HOST=bfb_database
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=bfd_application
+networks:
+  bfb-network:
+    driver: bridge
