@@ -4,7 +4,7 @@ services:
     image: mongo:latest
     container_name: "bfb_database"
     ports:
-      - "21017:21017"
+      - "27017:27017"
     networks:
       - bfb-network
 
