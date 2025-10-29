@@ -1,6 +1,5 @@
 package imt.archi.bfb.interfaces.rest.vehicles;
 
-import imt.archi.bfb.core.vehicles.VehiclesService;
 import imt.archi.bfb.core.vehicles.VehiclesServiceValidator;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.vehicles.model.input.VehicleInput;
