@@ -1,4 +1,4 @@
-package imt.archi.bfb.vehicles.model;
+package imt.archi.bfb.core.commons.model;
 
 public enum StateVehicle {
     AVAILABLE,
