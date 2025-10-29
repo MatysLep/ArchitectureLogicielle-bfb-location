@@ -1,6 +1,7 @@
 package imt.archi.bfb.interfaces.rest.vehicles;
 
 import imt.archi.bfb.core.vehicles.VehiclesService;
+import imt.archi.bfb.core.vehicles.VehiclesServiceValidator;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.vehicles.model.input.VehicleInput;
 import imt.archi.bfb.interfaces.rest.vehicles.model.output.VehicleOutput;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @RequestMapping("api/vehicles")
 public class VehicleController {
-    private final VehiclesService vehiclesService;
+    private final VehiclesServiceValidator vehiclesService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
