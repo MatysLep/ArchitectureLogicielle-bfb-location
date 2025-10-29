@@ -24,7 +24,7 @@ public class VehicleInput extends AbstractInput {
     private String motorization;
     private String color;
     private Date acquisitionDate;
-    private StateEnum state;
+    private String state;
 
     public static Vehicle convert(final VehicleInput input) {
         return Vehicle.builder()
@@ -34,7 +34,7 @@ public class VehicleInput extends AbstractInput {
                 .motorization(input.getMotorization())
                 .color(input.getColor())
                 .acquisitionDate(input.getAcquisitionDate())
-                .state(input.getState())
+                .state(StateEnum.fromOrDefault(input.getState()))
                 .build();
     }
 }
