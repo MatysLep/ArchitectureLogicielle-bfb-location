@@ -1,6 +1,6 @@
 package imt.archi.bfb.infra.db.vehicles.repositories.entities;
 
-import imt.archi.bfb.core.commons.model.StateVehicle;
+import imt.archi.bfb.core.commons.model.StateEnum;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,7 +14,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collation = "vehicles")
+@Document(collection = "vehicles")
 public class VehicleEntity {
 
     /**
@@ -51,5 +51,5 @@ public class VehicleEntity {
     /**
      * État de la voiture
      */
-    private StateVehicle state;
+    private StateEnum state;
 }
