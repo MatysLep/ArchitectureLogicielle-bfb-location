@@ -1,6 +1,6 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.output;
 
-import imt.archi.bfb.core.commons.model.StateEnum;
+import imt.archi.bfb.core.common.model.StateEnum;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.output.AbstractOutput;
 import lombok.*;
@@ -15,7 +15,7 @@ import java.util.Date;
 @ToString
 public class VehicleOutput extends AbstractOutput {
     @Serial
-    private static final long serialVersionUID = -5881478654611574936L;
+    private static final long serialVersionUID = 1L;
     private final String registration;
     private final String brand;
     private final String model;

@@ -8,5 +8,5 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AbstractInput implements Serializable {
     @Serial
-    private static final long serialVersionUID = -3319284486621296531L;
+    private static final long serialVersionUID = 1L;
 }

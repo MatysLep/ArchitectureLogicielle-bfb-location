@@ -10,5 +10,5 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AbstractOutput implements Serializable {
     @Serial
-    private static final long serialVersionUID = 2457194761432688330L;
+    private static final long serialVersionUID = 1L;
 }

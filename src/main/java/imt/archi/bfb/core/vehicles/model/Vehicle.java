@@ -1,6 +1,6 @@
 package imt.archi.bfb.core.vehicles.model;
 
-import imt.archi.bfb.core.commons.model.StateEnum;
+import imt.archi.bfb.core.common.model.StateEnum;
 import lombok.*;
 
 import java.util.Date;

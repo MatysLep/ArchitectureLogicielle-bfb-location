@@ -1,6 +1,6 @@
 package imt.archi.bfb.infra.db.vehicles.repositories.entities;
 
-import imt.archi.bfb.core.commons.model.StateEnum;
+import imt.archi.bfb.core.common.model.StateEnum;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -6,7 +6,7 @@ import java.io.Serial;
 
 public abstract class AbstractRestException extends RuntimeException {
     @Serial
-    private static final long serialVersionUID = -5846250763816026669L;
+    private static final long serialVersionUID = 1L;
 
     public abstract HttpStatus getHttpStatus();
 

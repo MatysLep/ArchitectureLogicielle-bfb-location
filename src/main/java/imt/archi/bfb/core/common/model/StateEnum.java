@@ -1,4 +1,4 @@
-package imt.archi.bfb.core.commons.model;
+package imt.archi.bfb.core.common.model;
 
 import java.util.Optional;
 

@@ -1,6 +1,6 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.input;
 
-import imt.archi.bfb.core.commons.model.StateEnum;
+import imt.archi.bfb.core.common.model.StateEnum;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import lombok.Data;
@@ -17,7 +17,7 @@ import java.util.Date;
 @ToString
 public class VehicleInput extends AbstractInput {
     @Serial
-    private static final long serialVersionUID = -6256916847598118362L;
+    private static final long serialVersionUID = 1L;
     private String registration;
     private String brand;
     private String model;
