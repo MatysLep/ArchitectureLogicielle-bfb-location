@@ -1,6 +1,6 @@
 package imt.archi.bfb.interfaces.rest.clients;
 
-import imt.archi.bfb.core.clients.ClientService;
+import imt.archi.bfb.core.clients.ClientServiceValidator;
 import imt.archi.bfb.core.clients.model.Client;
 import imt.archi.bfb.interfaces.rest.clients.model.input.ClientInput;
 import imt.archi.bfb.interfaces.rest.clients.model.input.ClientUpdateInput;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @RequestMapping("/api/v1/clients")
 public class ClientController {
-    ClientService service;
+    ClientServiceValidator service;
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

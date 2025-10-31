@@ -10,7 +10,7 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class ClientService {
-    private ClientBddService clientBddService;
+    protected ClientBddService clientBddService;
 
     public Collection<Client> getAll() {
         return Objects.requireNonNullElse(this.clientBddService.getAll(), Collections.emptySet());
