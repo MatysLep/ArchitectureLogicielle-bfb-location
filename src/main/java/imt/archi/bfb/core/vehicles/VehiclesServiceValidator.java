@@ -20,4 +20,11 @@ public class VehiclesServiceValidator extends VehiclesService{
 
         return super.create(vehicle);
     }
+
+    public void update(final Vehicle vehicle) {
+        new ConstraintValidatorStep<Vehicle>()
+            .validate(vehicle)
+            .throwIfValid();
+        super.update(vehicle);
+    }
 }

@@ -24,4 +24,12 @@ public class VehiclesService {
     }
 
     public Vehicle create(final Vehicle vehicle) {return vehiclesDbService.save(vehicle); }
+
+    public void update(final Vehicle vehicle) {
+        vehiclesDbService.save(vehicle);
+    }
+
+    public void delete(final String registration) {
+        vehiclesDbService.delete(registration);
+    }
 }
