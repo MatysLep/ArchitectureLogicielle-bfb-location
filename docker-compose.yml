@@ -9,7 +9,7 @@ services:
       - bfb-network
 
   bfb:
-    image: bfb
+    build: .
     container_name: bfb
     ports:
       - "8080:8080"
