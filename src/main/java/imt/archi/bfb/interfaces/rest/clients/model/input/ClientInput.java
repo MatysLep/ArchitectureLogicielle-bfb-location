@@ -1,6 +1,7 @@
 package imt.archi.bfb.interfaces.rest.clients.model.input;
 
 import imt.archi.bfb.core.clients.model.Client;
+import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -8,8 +9,8 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode()
-public class ClientInput {
+@EqualsAndHashCode(callSuper = false)
+public class ClientInput extends AbstractInput {
     private String name;
     private String surname;
     private String birthDate;
