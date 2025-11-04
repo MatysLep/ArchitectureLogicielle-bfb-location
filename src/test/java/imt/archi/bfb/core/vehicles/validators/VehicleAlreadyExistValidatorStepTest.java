@@ -1,7 +1,6 @@
 package imt.archi.bfb.core.vehicles.validators;
 
 import imt.archi.bfb.core.common.model.StateEnum;
-import imt.archi.bfb.core.vehicles.VehiclesServiceValidator;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.infra.db.vehicles.VehiclesDbService;
 import imt.archi.bfb.interfaces.rest.common.exception.ConflictException;
