@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/clients")
+@RequestMapping("/api/clients")
 public class ClientController {
     ClientServiceValidator service;
 
