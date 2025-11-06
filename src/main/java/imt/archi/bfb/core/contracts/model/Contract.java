@@ -3,6 +3,7 @@ package imt.archi.bfb.core.contracts.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import imt.archi.bfb.core.common.model.ContractState;
 import jakarta.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -26,14 +27,17 @@ public class Contract {
     private String idClient;
 
     @NotNull
+    private String idVehicle;
+
+    @NotNull
     //@Pattern voir format date ?
-    private LocalDate dateDebut;
+    private LocalDate startDate;
 
     @NotNull
-    private LocalDate dateFin;
+    private LocalDate endDate;
 
     @NotNull
-    private String etat; // TODO gerer Enum : (en attente, en cours, terminé, en retard et annulé) voir common state enum (differencier de l'etat des voitures VehicleState != ContractState)
+    private ContractState state;
 
 
 }

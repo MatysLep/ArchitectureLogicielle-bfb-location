@@ -1,8 +1,11 @@
 package imt.archi.bfb.infra.db.contracts;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 
@@ -10,33 +13,43 @@ import org.springframework.stereotype.Service;
 
 import imt.archi.bfb.core.contracts.model.Contract;
 import imt.archi.bfb.infra.db.contracts.repositories.ContractRepository;
+import imt.archi.bfb.infra.db.contracts.repositories.entities.ContractEntity;
 import imt.archi.bfb.infra.db.contracts.repositories.mapper.ContractDbMapper;
 
 @Service
 @AllArgsConstructor
 public class ContractsDbService {
 
-    private final ContractRepository contractRepository;
-    private final ContractDbMapper contractDbMapper;
+    private final ContractRepository repository;
+    private final ContractDbMapper mapper;
 
-    public Collection<Contract> getAll(){
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method");    
+    public Collection<Contract> getAll() {
+        return Objects.requireNonNullElse(repository.findAll(), Collections.<ContractEntity>emptyList())
+                .stream()
+                .map(mapper::from)
+                .collect(Collectors.toSet());
     }
 
-    public Optional<Contract> get(final UUID id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method");    
+    public Optional<Contract> get(final UUID identifier){
+        return Optional.ofNullable(identifier)
+                .map(UUID::toString)
+                .flatMap(repository::findById)
+                .map(mapper::from);
     }
 
-    public Contract save(final Contract id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method");    
+    public Contract save(final Contract Contract){
+        Objects.requireNonNull(Contract, "Impossible de sauvegarder un contrat nul");
+        return mapper.from(
+                repository.save(
+                        mapper.to(Contract)
+                )
+        );
     }
 
-    public void delete(final UUID id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method");    
+    public void delete(final UUID identifier){
+        Optional.ofNullable(identifier)
+                .map(UUID::toString)
+                .ifPresent(repository::deleteById);
     }
 
 }

@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import imt.archi.bfb.core.common.model.ContractState;
+
 import java.time.LocalDate;
 
 @Data
@@ -17,7 +19,9 @@ public class ContractEntity {
     @Id
     private String id;
     private String idClient;
-    private LocalDate dateDebut;
-    private LocalDate dateFin;
-    private String etat; // TODO gerer Enum : (en attente, en cours, terminé, en retard et annulé) voir common state enum (differencier de l'etat des voitures VehicleState != ContractState)
+    private String idVehicle;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private ContractState state;
+
 }
