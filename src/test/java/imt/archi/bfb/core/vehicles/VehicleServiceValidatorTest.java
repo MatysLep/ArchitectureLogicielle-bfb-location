@@ -1,6 +1,6 @@
 package imt.archi.bfb.core.vehicles;
 
-import imt.archi.bfb.core.common.model.StateEnum;
+import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.infra.db.vehicles.VehiclesDbService;
 import imt.archi.bfb.interfaces.rest.common.exception.ConflictException;
@@ -40,7 +40,7 @@ class VehicleServiceValidatorTest {
                 .motorization("MOTOR")
                 .color("COLOR")
                 .acquisitionDate(new Date())
-                .state(StateEnum.AVAILABLE)
+                .state(VehicleState.AVAILABLE)
                 .build();
     }
 

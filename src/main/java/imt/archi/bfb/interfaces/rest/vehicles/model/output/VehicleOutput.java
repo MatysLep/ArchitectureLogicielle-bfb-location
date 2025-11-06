@@ -1,6 +1,6 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.output;
 
-import imt.archi.bfb.core.common.model.StateEnum;
+import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.output.AbstractOutput;
 import lombok.*;
@@ -22,7 +22,7 @@ public class VehicleOutput extends AbstractOutput {
     private final String motorization;
     private final String color;
     private final Date acquisitionDate;
-    private final StateEnum state;
+    private final VehicleState state;
 
 
     public static VehicleOutput from(final Vehicle vehicle) {

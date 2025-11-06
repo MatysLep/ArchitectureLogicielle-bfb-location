@@ -1,6 +1,6 @@
 package imt.archi.bfb.core.vehicles.model;
 
-import imt.archi.bfb.core.common.model.StateEnum;
+import imt.archi.bfb.core.common.model.VehicleState;
 import lombok.*;
 
 import java.util.Date;
@@ -44,5 +44,5 @@ public class Vehicle {
     /**
      * État de la voiture
      */
-    public StateEnum state;
+    public VehicleState state;
 }

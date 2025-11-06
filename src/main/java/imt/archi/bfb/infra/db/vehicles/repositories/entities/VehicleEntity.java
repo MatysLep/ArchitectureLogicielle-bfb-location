@@ -1,6 +1,6 @@
 package imt.archi.bfb.infra.db.vehicles.repositories.entities;
 
-import imt.archi.bfb.core.common.model.StateEnum;
+import imt.archi.bfb.core.common.model.VehicleState;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -51,5 +51,5 @@ public class VehicleEntity {
     /**
      * État de la voiture
      */
-    private StateEnum state;
+    private VehicleState state;
 }

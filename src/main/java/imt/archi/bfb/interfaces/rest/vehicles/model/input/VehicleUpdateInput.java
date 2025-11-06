@@ -1,6 +1,6 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.input;
 
-import imt.archi.bfb.core.common.model.StateEnum;
+import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import imt.archi.bfb.interfaces.rest.common.model.input.UpdatableProperty;
@@ -25,7 +25,7 @@ public class VehicleUpdateInput extends AbstractInput {
     private UpdatableProperty<String> color = UpdatableProperty.empty();
     private UpdatableProperty<Date> acquisitionDate = UpdatableProperty.empty();
 
-    public void setState(final StateEnum state) {
+    public void setState(final VehicleState state) {
         this.state = UpdatableProperty.makesChanges(state);
     }
 
@@ -49,7 +49,7 @@ public class VehicleUpdateInput extends AbstractInput {
         this.brand = UpdatableProperty.makesChanges(brand);
     }
 
-    private UpdatableProperty<StateEnum> state = UpdatableProperty.empty();
+    private UpdatableProperty<VehicleState> state = UpdatableProperty.empty();
 
     public static Vehicle from(final VehicleUpdateInput input, final Vehicle alreadySaved) {
         return alreadySaved.toBuilder()

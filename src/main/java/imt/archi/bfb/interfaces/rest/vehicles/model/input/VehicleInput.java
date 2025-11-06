@@ -1,6 +1,6 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.input;
 
-import imt.archi.bfb.core.common.model.StateEnum;
+import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import lombok.Data;
@@ -34,7 +34,7 @@ public class VehicleInput extends AbstractInput {
                 .motorization(input.getMotorization())
                 .color(input.getColor())
                 .acquisitionDate(input.getAcquisitionDate())
-                .state(StateEnum.fromOrDefault(input.getState()))
+                .state(VehicleState.fromOrDefault(input.getState()))
                 .build();
     }
 }
