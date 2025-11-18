@@ -1,6 +1,8 @@
 package imt.archi.bfb.core.vehicles.model;
 
 import imt.archi.bfb.core.common.model.VehicleState;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.util.Date;
@@ -10,39 +12,51 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 public class Vehicle {
+    /**
+     * Pattern de validation pour les plaques : lettres et chiffres uniquement
+     */
+    private static final String REGISTRATION_PATTERN = "^[A-Z]{2}-[0-9]{3}-[A-Z]{2}$";
 
     /**
      * Identifiant unique du véhicule
      */
-    public String registration;
+    @NotNull(message = "La plaque d'immatriculation ne peut pas être nulle.")
+    @Pattern(regexp = REGISTRATION_PATTERN, message = "La plaque n'est pas valide, il faut respecter ce format : AA-123-BB.")
+    private final String registration;
 
     /**
      * Marque de la voiture
      */
-    public String brand;
+    @NotNull(message = "La marque ne peut pas être nulle.")
+    private String brand;
 
     /**
      * Modèle de la voiture
      */
-    public String model;
+    @NotNull(message = "Le model ne peut pas être nul.")
+    private String model;
 
     /**
      * Motorisation de la voiture
      */
-    public String motorization;
+    @NotNull(message = "La motorisation ne peut pas être nulle.")
+    private String motorization;
 
     /**
      * Couleur de la voiture
      */
-    public String color;
+    @NotNull(message = "La couleur ne peut pas être nulle.")
+    private String color;
 
     /**
      * Date d'acquisition
      */
-    public Date acquisitionDate;
+    @NotNull(message = "La date d'acquisition ne peut pas être nulle.")
+    private Date acquisitionDate;
 
     /**
      * État de la voiture
      */
-    public VehicleState state;
+    @NotNull(message = "L'état du véhicule ne peut pas être nul.")
+    private VehicleState state;
 }
