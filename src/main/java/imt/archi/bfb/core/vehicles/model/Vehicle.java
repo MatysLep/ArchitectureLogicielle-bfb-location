@@ -1,6 +1,7 @@
 package imt.archi.bfb.core.vehicles.model;
 
 import imt.archi.bfb.core.common.model.VehicleState;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
@@ -22,41 +23,48 @@ public class Vehicle {
      */
     @NotNull(message = "La plaque d'immatriculation ne peut pas être nulle.")
     @Pattern(regexp = REGISTRATION_PATTERN, message = "La plaque n'est pas valide, il faut respecter ce format : AA-123-BB.")
-    private final String registration;
+    @Schema(description = "Plaque du véhicule", example = "AA-123-BB")
+    private String registration;
 
     /**
      * Marque de la voiture
      */
     @NotNull(message = "La marque ne peut pas être nulle.")
+    @Schema(description = "Marque du véhicule", example = "Toyota")
     private String brand;
 
     /**
      * Modèle de la voiture
      */
     @NotNull(message = "Le model ne peut pas être nul.")
+    @Schema(description = "Modèle du véhicule", example = "Clio")
     private String model;
 
     /**
      * Motorisation de la voiture
      */
     @NotNull(message = "La motorisation ne peut pas être nulle.")
+    @Schema(description = "Motorisation du véhicule", example = "Diesel")
     private String motorization;
 
     /**
      * Couleur de la voiture
      */
     @NotNull(message = "La couleur ne peut pas être nulle.")
+    @Schema(description = "Couleur du véhicule", example = "Bleu")
     private String color;
 
     /**
      * Date d'acquisition
      */
     @NotNull(message = "La date d'acquisition ne peut pas être nulle.")
+    @Schema(type = "string", format = "date")
     private Date acquisitionDate;
 
     /**
      * État de la voiture
      */
     @NotNull(message = "L'état du véhicule ne peut pas être nul.")
+    @Schema(description = "État du véhicule", implementation = VehicleState.class)
     private VehicleState state;
 }

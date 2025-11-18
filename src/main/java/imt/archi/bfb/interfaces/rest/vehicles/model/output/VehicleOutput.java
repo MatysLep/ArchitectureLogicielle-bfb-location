@@ -3,6 +3,7 @@ package imt.archi.bfb.interfaces.rest.vehicles.model.output;
 import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.output.AbstractOutput;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import java.io.Serial;
@@ -16,12 +17,26 @@ import java.util.Date;
 public class VehicleOutput extends AbstractOutput {
     @Serial
     private static final long serialVersionUID = 1L;
+
+    @Schema(description = "Plaque du véhicule", example = "AA-123-BB")
     private final String registration;
+
+    @Schema(description = "Marque du véhicule", example = "Toyota")
     private final String brand;
+
+    @Schema(description = "Modèle du véhicule", example = "Clio")
     private final String model;
+
+    @Schema(description = "Motorisation du véhicule", example = "Diesel")
     private final String motorization;
+
+    @Schema(description = "Couleur du véhicule", example = "Bleu")
     private final String color;
+
+    @Schema(type = "string", format = "date")
     private final Date acquisitionDate;
+
+    @Schema(description = "État du véhicule", implementation = VehicleState.class)
     private final VehicleState state;
 
 

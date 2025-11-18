@@ -3,6 +3,7 @@ package imt.archi.bfb.interfaces.rest.contracts.model.input;
 import java.io.Serial;
 import java.time.LocalDate;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import imt.archi.bfb.core.common.model.ContractState;
@@ -29,11 +30,21 @@ public class ContractUpdateInput extends AbstractInput {
 
     @Serial
     private static final long serialVersionUID = -6190479828349200043L;
-    private UpdatableProperty<String> idClient = UpdatableProperty.empty();;
-    private UpdatableProperty<String> idVehicle = UpdatableProperty.empty();;
-    private UpdatableProperty<LocalDate> startDate = UpdatableProperty.empty();;
-    private UpdatableProperty<LocalDate> endDate = UpdatableProperty.empty();;
-    private UpdatableProperty<ContractState> state = UpdatableProperty.empty();;
+
+    @Schema(description = "ID du client", type = "string")
+    private UpdatableProperty<String> idClient = UpdatableProperty.empty();
+
+    @Schema(description = "ID du véhicule", type = "string")
+    private UpdatableProperty<String> idVehicle = UpdatableProperty.empty();
+
+    @Schema(description = "Date de début", type = "date")
+    private UpdatableProperty<LocalDate> startDate = UpdatableProperty.empty();
+
+    @Schema(description = "Date de fin", type = "date")
+    private UpdatableProperty<LocalDate> endDate = UpdatableProperty.empty();
+
+    @Schema(description = "Status du contrat", implementation = ContractState.class)
+    private UpdatableProperty<ContractState> state = UpdatableProperty.empty();
 
     public void setIdClient(final String idClient) {
         this.idClient = UpdatableProperty.makesChanges(idClient);

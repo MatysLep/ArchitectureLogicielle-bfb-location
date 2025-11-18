@@ -1,9 +1,12 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.input;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import imt.archi.bfb.interfaces.rest.common.model.input.UpdatableProperty;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,18 +22,24 @@ import java.util.Date;
 public class VehicleUpdateInput extends AbstractInput {
     @Serial
     private static final long serialVersionUID = 1L;
+
+    @Schema(description = "Marque du véhicule", type = "string", example = "Tesla")
     private UpdatableProperty<String> brand = UpdatableProperty.empty();
+
+    @Schema(description = "Modèle du véhicule", type = "string", example = "Model Y")
     private UpdatableProperty<String> model = UpdatableProperty.empty();
+
+    @Schema(description = "Motorisation du véhicule", type = "string", example = "Electric")
     private UpdatableProperty<String> motorization = UpdatableProperty.empty();
+
+    @Schema(description = "Couleur du véhicule", type = "string", example = "Rouge")
     private UpdatableProperty<String> color = UpdatableProperty.empty();
-    private UpdatableProperty<Date> acquisitionDate = UpdatableProperty.empty();
+
+    @Schema(description = "État du véhicule", implementation = VehicleState.class)
+    private UpdatableProperty<VehicleState> state = UpdatableProperty.empty();
 
     public void setState(final VehicleState state) {
         this.state = UpdatableProperty.makesChanges(state);
-    }
-
-    public void setAcquisitionDate(final Date acquisitionDate) {
-        this.acquisitionDate = UpdatableProperty.makesChanges(acquisitionDate);
     }
 
     public void setColor(final String color) {
@@ -48,8 +57,6 @@ public class VehicleUpdateInput extends AbstractInput {
     public void setBrand(final String brand) {
         this.brand = UpdatableProperty.makesChanges(brand);
     }
-
-    private UpdatableProperty<VehicleState> state = UpdatableProperty.empty();
 
     public static Vehicle from(final VehicleUpdateInput input, final Vehicle alreadySaved) {
         return alreadySaved.toBuilder()
