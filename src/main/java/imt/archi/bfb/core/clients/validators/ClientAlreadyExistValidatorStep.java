@@ -21,9 +21,12 @@ public class ClientAlreadyExistValidatorStep extends AbstractValidatorStep<Clien
     }
 
     private boolean isSameThing(final Client input, final Client alreadySaved){
-        return alreadySaved.getName().equalsIgnoreCase(input.getName())
-                && alreadySaved.getSurname().equalsIgnoreCase(input.getSurname())
-                && alreadySaved.getBirthDate().equals(input.getBirthDate());
+        boolean sameName = alreadySaved.getName().equalsIgnoreCase(input.getName());
+        boolean sameSurname = alreadySaved.getSurname().equalsIgnoreCase(input.getSurname());
+        boolean sameBirthDate = alreadySaved.getBirthDate().equals(input.getBirthDate());
+        boolean differentId = !alreadySaved.getId().equals(input.getId());
+
+        return sameName && sameSurname && sameBirthDate && differentId;
     }
 }
 

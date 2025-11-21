@@ -19,6 +19,7 @@ public class ClientOutput extends AbstractOutput {
                 .name(client.getName())
                 .surname(client.getSurname())
                 .birthDate(client.getBirthDate().toString())
+                .address(client.getAddress())
                 .driverLicenseNumber(client.getDriverLicenseNumber())
                 .build();
     }

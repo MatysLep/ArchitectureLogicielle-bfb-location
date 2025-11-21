@@ -22,6 +22,8 @@ public class NumberDriverLicenceAlreadyExistValidatorStep extends AbstractValida
     }
 
     private boolean isSameDriverLicenseNumber(final Client input, final Client alreadySaved){
-        return alreadySaved.getDriverLicenseNumber().equalsIgnoreCase(input.getDriverLicenseNumber());
+        boolean sameLicenseNumber = alreadySaved.getDriverLicenseNumber().equalsIgnoreCase(input.getDriverLicenseNumber());
+        boolean differentUser = !alreadySaved.getId().equals(input.getId());
+        return sameLicenseNumber && differentUser;
     }
 }
