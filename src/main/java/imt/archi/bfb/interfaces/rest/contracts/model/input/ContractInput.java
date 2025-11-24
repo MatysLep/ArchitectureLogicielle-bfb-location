@@ -2,9 +2,11 @@ package imt.archi.bfb.interfaces.rest.contracts.model.input;
 
 import java.io.Serial;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import imt.archi.bfb.core.common.model.VehicleState;
+import imt.archi.bfb.core.common.validators.DateValidator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -27,22 +29,26 @@ public class ContractInput extends AbstractInput {
     @Schema(description = "ID du véhicule")
     private String idVehicle;
 
-    @Schema(description = "Date de début", type = "date")
-    private LocalDate startDate;
+    @Schema(description = "Date de début", example = "01/01/2000")
+    @DateValidator
+    private String startDate;
 
-    @Schema(description = "Date de fin", type = "date")
-    private LocalDate endDate;
+    @Schema(description = "Date de fin", example = "01/01/2000")
+    @DateValidator
+    private String endDate;
 
     @Schema(description = "Status du contrat", implementation = ContractState.class)
     private ContractState state;
 
     public static Contract convert(ContractInput contract) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         return Contract.builder()
             .id(UUID.randomUUID())
             .idClient(contract.getIdClient())
             .idVehicle(contract.getIdVehicle())
-            .startDate(contract.getStartDate())
-            .endDate(contract.getEndDate())
+            .startDate(LocalDate.parse(contract.getStartDate(), formatter))
+            .endDate(LocalDate.parse(contract.getEndDate(), formatter))
             .state(contract.getState())
             .build();
     }

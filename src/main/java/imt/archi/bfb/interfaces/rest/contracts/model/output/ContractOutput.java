@@ -3,6 +3,7 @@ package imt.archi.bfb.interfaces.rest.contracts.model.output;
 import java.io.Serial;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -38,10 +39,12 @@ public class ContractOutput extends AbstractOutput {
     @Schema(description = "ID du véhicule")
     private final String idVehicle;
 
-    @Schema(description = "Date de début", type = "date")
+    @Schema(description = "Date de début", example = "01/01/2000", type = "string")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private final LocalDate startDate;
 
-    @Schema(description = "Date de fin", type = "date")
+    @Schema(description = "Date de fin", example = "01/01/2000", type = "string")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private final LocalDate endDate;
 
     @Schema(description = "Status du contrat", implementation = ContractState.class)

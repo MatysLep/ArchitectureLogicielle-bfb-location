@@ -33,7 +33,6 @@ public class Contract {
     private String idVehicle;
 
     @NotNull
-    //@Pattern voir format date ?
     @Schema(description = "Date de début", type = "date")
     private LocalDate startDate;
 

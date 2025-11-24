@@ -1,5 +1,8 @@
 package imt.archi.bfb.core.common.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Optional;
 
 public enum ContractState { 
@@ -9,8 +12,19 @@ public enum ContractState {
     DELAYED,     // en retard
     CANCELLED;   // annulé
 
-    public static ContractState fromOrDefault(final String state) {
-        return ContractState.from(state).orElse(ContractState.PENDING);
+    @JsonCreator
+    public static ContractState fromString(String state) {
+        if (state == null) return null;
+        try {
+            return ContractState.valueOf(state.toUpperCase());
+        }catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("invalid contract state: " + state);
+        }
+    }
+
+    @JsonValue
+    public String toValue() {
+        return this.name();
     }
 
     public static Optional<ContractState> from(final String state) {

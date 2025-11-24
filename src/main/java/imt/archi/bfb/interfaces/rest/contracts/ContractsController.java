@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -44,13 +45,13 @@ public class ContractsController {
 
     @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ContractOutput create(@RequestBody final ContractInput contract) {
+    public ContractOutput create(@RequestBody @Valid final ContractInput contract) {
         return ContractOutput.from(service.create(ContractInput.convert(contract)));
     }
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/{idContract}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@PathVariable("idContract") final String identifier, @RequestBody final ContractUpdateInput contract) {
+    public void update(@PathVariable("idContract") final String identifier, @RequestBody @Valid final ContractUpdateInput contract) {
         service.update(
                 service.get(UUID.fromString(identifier))
                         .map(alreadySaved -> ContractUpdateInput.from(contract, alreadySaved))
