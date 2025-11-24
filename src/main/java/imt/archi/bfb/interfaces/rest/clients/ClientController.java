@@ -6,6 +6,7 @@ import imt.archi.bfb.interfaces.rest.clients.model.input.ClientInput;
 import imt.archi.bfb.interfaces.rest.clients.model.input.ClientUpdateInput;
 import imt.archi.bfb.interfaces.rest.clients.model.output.ClientOutput;
 import imt.archi.bfb.interfaces.rest.common.exception.NotFoundException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,7 +34,7 @@ public class ClientController {
 
     @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ClientOutput create(@RequestBody final ClientInput client) {
+    public ClientOutput create(@RequestBody @Valid final ClientInput client) {
         return ClientOutput.from(
                 this.service.create(
                         ClientInput.convert(client)
@@ -51,7 +52,7 @@ public class ClientController {
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/{idClient}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@PathVariable("idClient") final String id, @RequestBody final ClientUpdateInput client) {
+    public void update(@PathVariable("idClient") final String id, @RequestBody @Valid final ClientUpdateInput client) {
         this.service.update(
                 this.service.getOne(UUID.fromString(id))
                         .map(alreadySaved -> ClientUpdateInput.from(client, alreadySaved))
