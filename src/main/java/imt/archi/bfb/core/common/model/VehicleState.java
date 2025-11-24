@@ -1,5 +1,8 @@
 package imt.archi.bfb.core.common.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Optional;
 
 public enum VehicleState {
@@ -7,8 +10,19 @@ public enum VehicleState {
     RENT,
     BROKEN;
 
-    public static VehicleState fromOrDefault(final String state) {
-        return VehicleState.from(state).orElse(VehicleState.AVAILABLE);
+    @JsonCreator
+    public static VehicleState fromString(String value) {
+        if (value == null) return null;
+        try {
+            return VehicleState.valueOf(value.toUpperCase());
+        }catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("invalid vehicle state: " + value);
+        }
+    }
+
+    @JsonValue
+    public String toValue() {
+        return this.name();
     }
 
     public static Optional<VehicleState> from(final String state) {

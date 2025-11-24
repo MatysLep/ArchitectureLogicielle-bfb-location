@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -46,7 +47,7 @@ public class VehicleEntity {
     /**
      * Date d'acquisition
      */
-    private Date acquisitionDate;
+    private LocalDate acquisitionDate;
 
     /**
      * État de la voiture

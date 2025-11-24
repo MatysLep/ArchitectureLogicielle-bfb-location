@@ -1,5 +1,6 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.output;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.output.AbstractOutput;
@@ -7,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import java.io.Serial;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -33,8 +35,9 @@ public class VehicleOutput extends AbstractOutput {
     @Schema(description = "Couleur du véhicule", example = "Bleu")
     private final String color;
 
-    @Schema(type = "string", format = "date")
-    private final Date acquisitionDate;
+    @Schema(description = "Date d'acquisition'", example = "01/01/2000", type = "string")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private final LocalDate acquisitionDate;
 
     @Schema(description = "État du véhicule", implementation = VehicleState.class)
     private final VehicleState state;

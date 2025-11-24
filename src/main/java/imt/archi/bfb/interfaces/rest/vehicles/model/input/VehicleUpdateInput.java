@@ -1,11 +1,9 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.input;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import imt.archi.bfb.core.common.model.VehicleState;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import imt.archi.bfb.interfaces.rest.common.model.input.UpdatableProperty;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serial;
-import java.util.Date;
 
 @Getter
 @NoArgsConstructor

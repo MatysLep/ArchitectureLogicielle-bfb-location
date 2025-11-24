@@ -1,6 +1,7 @@
 package imt.archi.bfb.interfaces.rest.vehicles.model.input;
 
 import imt.archi.bfb.core.common.model.VehicleState;
+import imt.archi.bfb.core.common.validators.DateValidator;
 import imt.archi.bfb.core.vehicles.model.Vehicle;
 import imt.archi.bfb.interfaces.rest.common.model.input.AbstractInput;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,6 +11,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serial;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Data
@@ -34,21 +37,24 @@ public class VehicleInput extends AbstractInput {
     @Schema(description = "Couleur du véhicule", example = "Bleu")
     private String color;
 
-    @Schema(type = "string", format = "date")
-    private Date acquisitionDate;
+    @Schema(description = "Date d'acquisition", example = "01/01/1990")
+    @DateValidator
+    private String acquisitionDate;
 
     @Schema(description = "État du véhicule", implementation = VehicleState.class)
-    private String state;
+    private VehicleState state;
 
     public static Vehicle convert(final VehicleInput input) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         return Vehicle.builder()
                 .registration(input.getRegistration())
                 .brand(input.getBrand())
                 .model(input.getModel())
                 .motorization(input.getMotorization())
                 .color(input.getColor())
-                .acquisitionDate(input.getAcquisitionDate())
-                .state(VehicleState.fromOrDefault(input.getState()))
+                .acquisitionDate(LocalDate.parse(input.getAcquisitionDate(), formatter))
+                .state(input.getState())
                 .build();
     }
 }

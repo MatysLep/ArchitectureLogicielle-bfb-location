@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -58,8 +59,8 @@ public class Vehicle {
      * Date d'acquisition
      */
     @NotNull(message = "La date d'acquisition ne peut pas être nulle.")
-    @Schema(type = "string", format = "date")
-    private Date acquisitionDate;
+    @Schema(description = "Date d'acquisition", example = "01/01/1990")
+    private LocalDate acquisitionDate;
 
     /**
      * État de la voiture

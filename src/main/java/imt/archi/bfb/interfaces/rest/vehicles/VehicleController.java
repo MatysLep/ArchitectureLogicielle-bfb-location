@@ -6,6 +6,7 @@ import imt.archi.bfb.interfaces.rest.common.exception.NotFoundException;
 import imt.archi.bfb.interfaces.rest.vehicles.model.input.VehicleInput;
 import imt.archi.bfb.interfaces.rest.vehicles.model.input.VehicleUpdateInput;
 import imt.archi.bfb.interfaces.rest.vehicles.model.output.VehicleOutput;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,7 +32,7 @@ public class VehicleController {
 
     @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public VehicleOutput create(@RequestBody final VehicleInput input) {
+    public VehicleOutput create(@RequestBody @Valid final VehicleInput input) {
         return VehicleOutput.from(
                 vehiclesService.create(
                         VehicleInput.convert(input)
@@ -48,7 +49,7 @@ public class VehicleController {
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/{registration}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@PathVariable("registration") final String registration, @RequestBody final VehicleUpdateInput vehicle) {
+    public void update(@PathVariable("registration") final String registration, @RequestBody @Valid final VehicleUpdateInput vehicle) {
         vehiclesService.update(
             vehiclesService.getOne(registration)
                 .map(alreadySaved -> VehicleUpdateInput.from(vehicle, alreadySaved))
