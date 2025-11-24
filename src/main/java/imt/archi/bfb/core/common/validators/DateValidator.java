@@ -25,7 +25,7 @@ public @interface DateValidator {
 
         @Override
         public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-            if(s == null) return  false;
+            if(s == null) return true;
             try {
                 LocalDate.parse(s.trim(), formatter);
                 return true;
