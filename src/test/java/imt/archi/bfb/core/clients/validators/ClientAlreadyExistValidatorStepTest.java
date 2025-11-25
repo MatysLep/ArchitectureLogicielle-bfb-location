@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -38,7 +39,7 @@ class ClientAlreadyExistValidatorStepTest {
                 .name("John")
                 .surname("Doe")
                 .birthDate(LocalDate.of(1990, 1, 1))
-                .driverLicenseNumber("DL-12345")
+                .driverLicenseNumber("010203040506")
                 .address("1 Main Street")
                 .build();
     }
@@ -51,7 +52,9 @@ class ClientAlreadyExistValidatorStepTest {
         @DisplayName("doit lever une ConflictException lorsqu'un client identique existe déjà")
         void shouldThrowConflictExceptionWhenClientAlreadyExists() {
             // Given
-            Client existingClient = inputClient.toBuilder().build();
+            Client existingClient = inputClient.toBuilder()
+                    .id(UUID.randomUUID())
+                    .build();
             when(service.getAll()).thenReturn(Set.of(existingClient));
 
             // When

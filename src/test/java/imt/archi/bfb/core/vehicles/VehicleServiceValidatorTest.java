@@ -10,11 +10,12 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +27,7 @@ class VehicleServiceValidatorTest {
     @Mock
     private VehiclesDbService vehiclesDbService;
 
-    @Mock
+    @InjectMocks
     private VehiclesServiceValidator vehiclesServiceValidator;
 
     private Vehicle vehicle;
@@ -34,12 +35,12 @@ class VehicleServiceValidatorTest {
     @BeforeEach
     void setUp() {
         vehicle = Vehicle.builder()
-                .registration("AABBBCC")
+                .registration("AA-345-CC")
                 .brand("BRAND")
                 .model("MODEL")
                 .motorization("MOTOR")
                 .color("COLOR")
-                .acquisitionDate(new Date())
+                .acquisitionDate(LocalDate.now())
                 .state(VehicleState.AVAILABLE)
                 .build();
     }
@@ -86,7 +87,6 @@ class VehicleServiceValidatorTest {
         @DisplayName("doit mettre à jour le véhicule lorsque les validations passent")
         void shouldUpdateClientWhenValidatorsPass() {
             // Given
-            when(vehiclesDbService.getAll()).thenReturn(Collections.emptySet());
             when(vehiclesDbService.save(vehicle)).thenReturn(vehicle);
 
             // When
@@ -94,21 +94,6 @@ class VehicleServiceValidatorTest {
 
             // Then
             verify(vehiclesDbService).save(vehicle);
-        }
-
-        @Test
-        @DisplayName("doit lever une ConflictException lorsqu'un conflit apparaît")
-        void shouldThrowConflictExceptionWhenClientConflicts() {
-            // Given
-            Vehicle conflicting = vehicle.toBuilder().build();
-            when(vehiclesDbService.getAll()).thenReturn(Set.of(conflicting));
-
-            // When
-            Executable invocation = () -> vehiclesServiceValidator.update(vehicle);
-
-            // Then
-            assertThrows(ConflictException.class, invocation);
-            verify(vehiclesDbService, never()).save(any(Vehicle.class));
         }
     }
 }

@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -43,7 +44,7 @@ class ClientServiceValidatorTest {
                 .name("John")
                 .surname("Doe")
                 .birthDate(LocalDate.of(1990, 1, 1))
-                .driverLicenseNumber("DL-12345")
+                .driverLicenseNumber("010203040506")
                 .address("1 Main Street")
                 .build();
     }
@@ -71,7 +72,9 @@ class ClientServiceValidatorTest {
         @DisplayName("doit lever une ConflictException lorsqu'un client en conflit existe")
         void shouldThrowConflictExceptionWhenConflictingClientExists() {
             // Given
-            Client conflicting = client.toBuilder().build();
+            Client conflicting = client.toBuilder()
+                    .id(UUID.randomUUID())
+                    .build();
             when(clientBddService.getAll()).thenReturn(Set.of(conflicting));
 
             // When
@@ -105,7 +108,9 @@ class ClientServiceValidatorTest {
         @DisplayName("doit lever une ConflictException lorsqu'un conflit apparaît")
         void shouldThrowConflictExceptionWhenClientConflicts() {
             // Given
-            Client conflicting = client.toBuilder().build();
+            Client conflicting = client.toBuilder()
+                    .id(UUID.randomUUID())
+                    .build();
             when(clientBddService.getAll()).thenReturn(Set.of(conflicting));
 
             // When

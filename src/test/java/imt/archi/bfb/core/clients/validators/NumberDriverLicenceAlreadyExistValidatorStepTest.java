@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -52,7 +53,8 @@ class NumberDriverLicenceAlreadyExistValidatorStepTest {
         void shouldThrowConflictExceptionWhenDriverLicenseNumberAlreadyExists() {
             // Given
             Client existingClient = inputClient.toBuilder()
-                    .driverLicenseNumber("dl-12345")
+                    .id(UUID.randomUUID())
+                    .driverLicenseNumber(inputClient.getDriverLicenseNumber())
                     .build();
             when(service.getAll()).thenReturn(Set.of(existingClient));
 
@@ -68,7 +70,7 @@ class NumberDriverLicenceAlreadyExistValidatorStepTest {
         void shouldNotThrowWhenDriverLicenseNumbersDiffer() {
             // Given
             Client differentClient = inputClient.toBuilder()
-                    .driverLicenseNumber("DL-67890")
+                    .driverLicenseNumber("020304050607")
                     .build();
             when(service.getAll()).thenReturn(Set.of(differentClient));
 

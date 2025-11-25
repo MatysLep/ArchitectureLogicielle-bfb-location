@@ -14,7 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -40,7 +40,7 @@ class VehicleAlreadyExistValidatorStepTest {
                 .model("MODEL")
                 .motorization("MOTOR")
                 .color("COLOR")
-                .acquisitionDate(new Date())
+                .acquisitionDate(LocalDate.now())
                 .state(VehicleState.AVAILABLE)
                 .build();
     }
@@ -73,7 +73,7 @@ class VehicleAlreadyExistValidatorStepTest {
                     .model("MODEL")
                     .motorization("MOTOR")
                     .color("COLOR")
-                    .acquisitionDate(new Date())
+                    .acquisitionDate(LocalDate.now())
                     .state(VehicleState.AVAILABLE)
                     .build();
             when(vehiclesDbService.getAll()).thenReturn(Set.of(differentVehicle));

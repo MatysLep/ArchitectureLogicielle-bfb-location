@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import org.junit.jupiter.api.function.Executable;
+
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,15 +41,15 @@ class VehicleDbServiceTest {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String nums = "0123456789";
         Random random = new Random();
-        StringBuilder sb = new StringBuilder(7);
-        sb.append(chars.charAt(random.nextInt(chars.length())));
-        sb.append(chars.charAt(random.nextInt(chars.length())));
-        sb.append(nums.charAt(random.nextInt(nums.length())));
-        sb.append(nums.charAt(random.nextInt(nums.length())));
-        sb.append(nums.charAt(random.nextInt(nums.length())));
-        sb.append(chars.charAt(random.nextInt(chars.length())));
-        sb.append(chars.charAt(random.nextInt(chars.length())));
-        return sb.toString();
+        return String.valueOf(chars.charAt(random.nextInt(chars.length()))) +
+                chars.charAt(random.nextInt(chars.length())) +
+                "-"                                         +
+                nums.charAt(random.nextInt(nums.length())) +
+                nums.charAt(random.nextInt(nums.length())) +
+                nums.charAt(random.nextInt(nums.length())) +
+                "-"                                         +
+                chars.charAt(random.nextInt(chars.length())) +
+                chars.charAt(random.nextInt(chars.length()));
     }
 
     @BeforeEach
@@ -59,7 +61,7 @@ class VehicleDbServiceTest {
                 .model("MODEL")
                 .motorization("MOTOR")
                 .color("COLOR")
-                .acquisitionDate(new Date())
+                .acquisitionDate(LocalDate.now())
                 .state(VehicleState.AVAILABLE)
                 .build();
 
