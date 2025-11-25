@@ -26,7 +26,7 @@ public class ContractInput extends AbstractInput {
     private String idClient;
 
     @Schema(description = "ID du véhicule")
-    private String idVehicle;
+    private String vehicleRegistration;
 
     @Schema(description = "Date de début", example = "01/01/2000")
     @DateValidator
@@ -45,7 +45,7 @@ public class ContractInput extends AbstractInput {
         return Contract.builder()
             .id(UUID.randomUUID())
             .idClient(contract.getIdClient())
-            .idVehicle(contract.getIdVehicle())
+            .vehicleRegistration(contract.getVehicleRegistration())
             .startDate(LocalDate.parse(contract.getStartDate(), formatter))
             .endDate(LocalDate.parse(contract.getEndDate(), formatter))
             .state(contract.getState())

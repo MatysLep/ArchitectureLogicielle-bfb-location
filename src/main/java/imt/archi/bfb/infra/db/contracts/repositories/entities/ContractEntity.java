@@ -19,7 +19,7 @@ public class ContractEntity {
     @Id
     private String id;
     private String idClient;
-    private String idVehicle;
+    private String vehicleRegistration;
     private LocalDate startDate;
     private LocalDate endDate;
     private ContractState state;

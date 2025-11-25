@@ -24,7 +24,7 @@ public class ContractUpdateInput extends AbstractInput {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return alreadySaved.toBuilder()
             .idClient(input.getIdClient().defaultIfNotOverwrite(alreadySaved.getIdClient()))
-            .idVehicle(input.getIdVehicle().defaultIfNotOverwrite(alreadySaved.getIdVehicle()))
+            .vehicleRegistration(input.getVehicleRegistration().defaultIfNotOverwrite(alreadySaved.getVehicleRegistration()))
             .startDate(
                     LocalDate.parse(
                             input.getStartDate().defaultIfNotOverwrite(alreadySaved.getStartDate().format(formatter)),
@@ -45,7 +45,7 @@ public class ContractUpdateInput extends AbstractInput {
     private UpdatableProperty<String> idClient = UpdatableProperty.empty();
 
     @Schema(description = "ID du véhicule", type = "string")
-    private UpdatableProperty<String> idVehicle = UpdatableProperty.empty();
+    private UpdatableProperty<String> vehicleRegistration = UpdatableProperty.empty();
 
     @Schema(description = "Date de début", example = "01/01/2000")
     private UpdatableProperty<String> startDate = UpdatableProperty.empty();
@@ -61,7 +61,7 @@ public class ContractUpdateInput extends AbstractInput {
     }
 
     public void setIdVehicle(final String idVehicle) {
-        this.idVehicle = UpdatableProperty.makesChanges(idVehicle);
+        this.vehicleRegistration = UpdatableProperty.makesChanges(idVehicle);
     }
 
     public void setStartDate(final String startDate) {

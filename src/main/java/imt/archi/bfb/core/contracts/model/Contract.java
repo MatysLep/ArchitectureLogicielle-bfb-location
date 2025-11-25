@@ -30,7 +30,7 @@ public class Contract {
 
     @NotNull
     @Schema(description = "ID du véhicule")
-    private String idVehicle;
+    private String vehicleRegistration;
 
     @NotNull
     @Schema(description = "Date de début", type = "date")

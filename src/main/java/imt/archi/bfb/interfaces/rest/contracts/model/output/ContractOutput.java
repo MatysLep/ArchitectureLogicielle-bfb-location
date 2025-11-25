@@ -22,7 +22,7 @@ public class ContractOutput extends AbstractOutput {
         return ContractOutput.builder()
                 .id(contract.getId().toString())
                 .idClient(contract.getIdClient())
-                .idVehicle(contract.getIdVehicle())
+                .vehicleRegistration(contract.getVehicleRegistration())
                 .startDate(contract.getStartDate())
                 .endDate(contract.getEndDate())
                 .state(contract.getState())
@@ -37,7 +37,7 @@ public class ContractOutput extends AbstractOutput {
     private final String idClient;
 
     @Schema(description = "ID du véhicule")
-    private final String idVehicle;
+    private final String vehicleRegistration;
 
     @Schema(description = "Date de début", example = "01/01/2000", type = "string")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
