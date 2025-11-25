@@ -1,6 +1,5 @@
 package imt.archi.bfb.interfaces.event.vehicles;
 
-import imt.archi.bfb.core.vehicles.VehiclesService;
 import imt.archi.bfb.core.contracts.ContractsService;
 import imt.archi.bfb.infra.event.vehicles.model.MouvementVehicleEvent;
 import lombok.AllArgsConstructor;

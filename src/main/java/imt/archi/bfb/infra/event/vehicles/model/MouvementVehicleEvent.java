@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.ToString;
 import org.springframework.context.ApplicationEvent;
 
-import java.util.UUID;
-
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString
