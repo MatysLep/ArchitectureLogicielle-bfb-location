@@ -16,7 +16,7 @@ public class ClientAlreadyExistValidatorStep extends AbstractValidatorStep<Clien
     @Override
     public void check(final Client toValidate) {
         if(Objects.requireNonNullElse(this.service.getAll(), Collections.<Client>emptySet()).stream().anyMatch(alreadySaved -> this.isSameThing(toValidate, alreadySaved))) {
-            throw new ConflictException(String.format("Un client ayant ses infos existe déjà : name : %s, surname : %s, birthdate : %s", toValidate.getName(), toValidate.getSurname(), toValidate.getBirthDate()));
+            throw new ConflictException(String.format("Un client ayant ces infos existe déjà : name : %s, surname : %s, birthdate : %s", toValidate.getName(), toValidate.getSurname(), toValidate.getBirthDate()));
         }
     }
 
