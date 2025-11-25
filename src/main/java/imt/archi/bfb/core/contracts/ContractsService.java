@@ -56,13 +56,13 @@ public class ContractsService {
         // CANCELLED les contrats futurs qui ne peuvent pas démarrer
         List<String> vehiclesIdsInLate = allContracts.stream()
                 .filter(c -> ContractState.DELAYED.equals(c.getState()) || lateContracts.contains(c))
-                .map(Contract::getIdVehicle)
+                .map(Contract::getVehicleRegistration)
                 .distinct()
                 .toList();
 
         allContracts.stream()
                 .filter(c -> ContractState.PENDING.equals(c.getState())) // Contrat en attente
-                .filter(c -> vehiclesIdsInLate.contains(c.getIdVehicle())) // Sur un véhicule en retard
+                .filter(c -> vehiclesIdsInLate.contains(c.getVehicleRegistration())) // Sur un véhicule en retard
                 .filter(c -> !c.getStartDate().isAfter(today)) // Qui aurait dû commencer aujourd'hui ou avant
                 .map(c -> c.toBuilder().state(ContractState.CANCELLED).build())
                 .forEach(this::update);
