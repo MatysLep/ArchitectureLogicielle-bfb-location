@@ -37,6 +37,13 @@ public class ContractsDbService {
                 .map(mapper::from);
     }
 
+    public Collection<Contract> getAllByVehicle(final String idVehicle) {
+        return Optional.ofNullable(idVehicle)
+                .map(repository::findByIdVehicle)
+                .map(contracts -> contracts.stream().map(mapper::from).collect(Collectors.toSet()))
+                .orElse(Collections.emptySet());
+    }
+
     public Contract save(final Contract Contract){
         Objects.requireNonNull(Contract, "Impossible de sauvegarder un contrat nul");
         return mapper.from(
