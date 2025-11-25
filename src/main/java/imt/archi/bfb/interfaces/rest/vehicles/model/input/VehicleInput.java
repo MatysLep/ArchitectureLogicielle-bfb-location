@@ -13,7 +13,6 @@ import lombok.ToString;
 import java.io.Serial;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor

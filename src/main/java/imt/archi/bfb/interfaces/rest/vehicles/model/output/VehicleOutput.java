@@ -9,7 +9,6 @@ import lombok.*;
 
 import java.io.Serial;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Builder(toBuilder = true)

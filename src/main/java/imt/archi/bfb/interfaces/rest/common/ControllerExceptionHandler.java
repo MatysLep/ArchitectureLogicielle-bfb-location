@@ -4,7 +4,6 @@ import imt.archi.bfb.interfaces.rest.common.exception.AbstractRestException;
 import imt.archi.bfb.interfaces.rest.common.model.output.ExceptionOutput;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.util.Strings;
-import org.springdoc.core.service.OperationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
