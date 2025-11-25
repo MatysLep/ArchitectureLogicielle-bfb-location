@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ContractRepository extends MongoRepository<ContractEntity, String> {
 
-    Collection<ContractEntity> findByIdVehicle(String idVehicle);
+    Collection<ContractEntity> findByVehicleRegistration(String idVehicle);
 }

@@ -39,7 +39,7 @@ public class ContractsDbService {
 
     public Collection<Contract> getAllByVehicle(final String idVehicle) {
         return Optional.ofNullable(idVehicle)
-                .map(repository::findByIdVehicle)
+                .map(repository::findByVehicleRegistration)
                 .map(contracts -> contracts.stream().map(mapper::from).collect(Collectors.toSet()))
                 .orElse(Collections.emptySet());
     }
