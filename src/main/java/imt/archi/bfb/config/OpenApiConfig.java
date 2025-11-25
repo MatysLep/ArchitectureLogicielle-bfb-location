@@ -16,8 +16,8 @@ public class OpenApiConfig {
                         .title("Projet Architecture Logicielle & EcoConception")
                         .version("1.0.0")
                         .contact(new Contact()
-                                .name("Benjamin Zawoda & Matys Lepretre")
-                                .email("benjamin.zawoda@etu.imt-nord-europe.fr; matys.lepretre@imt-nord-europe.fr"))
+                                .name("Benjamin Zawoda & Matys Lepretre & Florimond Caron")
+                                .email("benjamin.zawoda@etu.imt-nord-europe.fr; matys.lepretre@imt-nord-europe.fr; florimond.caron@etu.imt-nord-europe.fr"))
                         );
     }
 }
