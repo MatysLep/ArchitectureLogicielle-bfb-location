@@ -77,14 +77,14 @@ public class ContractUpdateInput extends AbstractInput {
     }
 
     @JsonIgnore
-    @DateValidator
+    @DateValidator(required = true)
     public String getStartDateValidator() {
         if(this.startDate == null) return null;
         return this.startDate.getValue();
     }
 
     @JsonIgnore
-    @DateValidator
+    @DateValidator(required = true)
     public String getEndDateValidator() {
         if(this.endDate == null) return null;
         return this.endDate.getValue();

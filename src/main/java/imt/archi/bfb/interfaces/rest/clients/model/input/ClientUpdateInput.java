@@ -61,7 +61,7 @@ public class ClientUpdateInput extends AbstractInput {
     public void setDriverLicenseNumber(final String driverLicenseNumber) {this.driverLicenseNumber = UpdatableProperty.makesChanges(driverLicenseNumber);}
 
     @JsonIgnore
-    @DateValidator
+    @DateValidator(required = true)
     public String getBirthDateValidation() {
         if (this.birthDate == null) return null;
         return this.birthDate.getValue();

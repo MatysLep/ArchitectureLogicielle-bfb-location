@@ -29,11 +29,11 @@ public class ContractInput extends AbstractInput {
     private String vehicleRegistration;
 
     @Schema(description = "Date de début", example = "01/01/2000")
-    @DateValidator
+    @DateValidator(required = true)
     private String startDate;
 
     @Schema(description = "Date de fin", example = "01/01/2000")
-    @DateValidator
+    @DateValidator(required = true)
     private String endDate;
 
     @Schema(description = "Status du contrat", implementation = ContractState.class)

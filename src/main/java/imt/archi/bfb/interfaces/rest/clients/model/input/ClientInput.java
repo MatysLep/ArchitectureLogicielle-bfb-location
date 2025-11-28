@@ -22,7 +22,7 @@ public class ClientInput extends AbstractInput {
     private String surname;
 
     @Schema(description = "Date de naissance", example = "01/01/2000")
-    @DateValidator
+    @DateValidator(required = true)
     private String birthDate;
 
     @Schema(description = "Adresse du client", example = "1 Rue de Paris, 75005 Paris")

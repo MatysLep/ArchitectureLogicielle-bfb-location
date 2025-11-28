@@ -37,7 +37,7 @@ public class VehicleInput extends AbstractInput {
     private String color;
 
     @Schema(description = "Date d'acquisition", example = "01/01/1990")
-    @DateValidator
+    @DateValidator(required = true, message = "La date est obligatoire et doit être au format JJ/MM/AAAA")
     private String acquisitionDate;
 
     @Schema(description = "État du véhicule", implementation = VehicleState.class)
