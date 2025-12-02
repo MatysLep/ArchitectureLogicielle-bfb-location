@@ -51,11 +51,11 @@ public class ContractsDbService {
                 .orElse(Collections.emptySet());
     }
 
-    public Contract save(final Contract Contract){
-        Objects.requireNonNull(Contract, "Impossible de sauvegarder un contrat nul");
+    public Contract save(final Contract contract){
+        Objects.requireNonNull(contract, "Impossible de sauvegarder un contrat nul");
         return mapper.from(
                 repository.save(
-                        mapper.to(Contract)
+                        mapper.to(contract)
                 )
         );
     }
