@@ -59,11 +59,26 @@ public class ContractsController {
         );
     }
 
-    
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{idContract}")
     public void delete(@PathVariable("idContract") final String identifier) {
         service.delete(UUID.fromString(identifier));
+    }
+
+    @ResponseStatus(value = HttpStatus.OK)
+    @GetMapping(value = "/vehicle/{vehicleRegistration}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<ContractOutput> getAllByVehicle(@PathVariable("vehicleRegistration") final String vehicleRegistration) {
+        return Objects.requireNonNullElse(service.getAllByVehicle(vehicleRegistration), Collections.<Contract>emptySet()).stream()
+                .map(ContractOutput::from)
+                .collect(Collectors.toSet());
+    }
+
+    @ResponseStatus(value = HttpStatus.OK)
+    @GetMapping(value = "/client/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<ContractOutput> getAllByClient(@PathVariable("idClient") final String idClient) {
+        return Objects.requireNonNullElse(service.getAllByClient(idClient), Collections.<Contract>emptySet()).stream()
+                .map(ContractOutput::from)
+                .collect(Collectors.toSet());
     }
 
 

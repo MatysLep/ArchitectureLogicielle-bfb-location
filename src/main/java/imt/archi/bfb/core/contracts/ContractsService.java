@@ -72,4 +72,12 @@ public class ContractsService {
         contractsDbService.delete(id);
     }
 
+    public Collection<Contract> getAllByVehicle(String idVehicle){
+        return Objects.requireNonNullElse(contractsDbService.getAllByVehicle(idVehicle), Collections.emptySet());
+    }
+
+    public Collection<Contract> getAllByClient(String idClient){
+        return Objects.requireNonNullElse(contractsDbService.getAllByClient(idClient), Collections.emptySet());
+    }
+
 }
