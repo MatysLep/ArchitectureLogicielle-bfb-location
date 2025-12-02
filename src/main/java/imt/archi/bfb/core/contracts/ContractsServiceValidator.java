@@ -10,6 +10,7 @@ import imt.archi.bfb.core.contracts.validators.AlreadyRentedValidatorStep;
 import imt.archi.bfb.core.contracts.validators.BrokenVehicleValidatorStep;
 import imt.archi.bfb.core.contracts.validators.ClientExistValidatorStep;
 import imt.archi.bfb.core.contracts.validators.ClientIdExistValidatorStep;
+import imt.archi.bfb.core.contracts.validators.DateCoherentValidatorStep;
 import imt.archi.bfb.core.contracts.validators.VehicleExistValidatorStep;
 import imt.archi.bfb.core.contracts.validators.VehicleIdExistValidatorStep;
 import imt.archi.bfb.infra.db.clients.ClientBddService;
@@ -29,13 +30,12 @@ public class ContractsServiceValidator extends ContractsService {
         this.clientBddService = clientBddService;
     }
 
-    // TODO validator date coherente start date > end date
-
     @Override
     public Contract create(Contract newContract) {
         new ConstraintValidatorStep<Contract>()
             .linkWith(new ClientExistValidatorStep(clientBddService))
             .linkWith(new VehicleExistValidatorStep(vehiclesDbService))
+            .linkWith(new DateCoherentValidatorStep())
             .linkWith(new BrokenVehicleValidatorStep(vehiclesDbService))
             .linkWith(new AlreadyRentedValidatorStep(contractsDbService))
             .validate(newContract)
@@ -48,6 +48,7 @@ public class ContractsServiceValidator extends ContractsService {
         new ConstraintValidatorStep<Contract>()
             .linkWith(new ClientExistValidatorStep(clientBddService))
             .linkWith(new VehicleExistValidatorStep(vehiclesDbService))
+            .linkWith(new DateCoherentValidatorStep())
             .linkWith(new BrokenVehicleValidatorStep(vehiclesDbService))
             .linkWith(new AlreadyRentedValidatorStep(contractsDbService))
             .validate(contract)
