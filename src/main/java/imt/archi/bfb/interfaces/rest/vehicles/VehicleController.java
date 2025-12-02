@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/vehicles")
-@CrossOrigin(origins = "http://localhost:5173")
 public class VehicleController {
     private final VehiclesServiceValidator vehiclesService;
 
