@@ -3,6 +3,7 @@ package imt.archi.bfb.interfaces.rest.contracts.model.input;
 import java.io.Serial;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import imt.archi.bfb.core.common.validators.DateValidator;
@@ -34,7 +35,6 @@ public class ContractUpdateInput extends AbstractInput {
                     input.getEndDate().defaultIfNotOverwrite(alreadySaved.getEndDate().format(formatter)),
                     formatter))
             .state(input.getState().defaultIfNotOverwrite(alreadySaved.getState()))
-            // .state(input.getState().defaultIfNotOverwrite(ContractState::fromOrDefault, alreadySaved.getState())) // TODO voir pk different du prof 
             .build();
     }
 
@@ -42,7 +42,7 @@ public class ContractUpdateInput extends AbstractInput {
     private static final long serialVersionUID = -6190479828349200043L;
 
     @Schema(description = "ID du client", type = "string")
-    private UpdatableProperty<String> idClient = UpdatableProperty.empty();
+    private UpdatableProperty<UUID> idClient = UpdatableProperty.empty();
 
     @Schema(description = "ID du véhicule", type = "string")
     private UpdatableProperty<String> vehicleRegistration = UpdatableProperty.empty();
@@ -56,7 +56,7 @@ public class ContractUpdateInput extends AbstractInput {
     @Schema(description = "Status du contrat", implementation = ContractState.class)
     private UpdatableProperty<ContractState> state = UpdatableProperty.empty();
 
-    public void setIdClient(final String idClient) {
+    public void setIdClient(final UUID idClient) {
         this.idClient = UpdatableProperty.makesChanges(idClient);
     }
 

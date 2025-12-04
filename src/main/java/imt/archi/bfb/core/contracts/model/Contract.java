@@ -26,7 +26,7 @@ public class Contract {
 
     @NotNull
     @Schema(description = "ID du client")
-    private String idClient;
+    private UUID idClient;
 
     @NotNull
     @Schema(description = "ID du véhicule")

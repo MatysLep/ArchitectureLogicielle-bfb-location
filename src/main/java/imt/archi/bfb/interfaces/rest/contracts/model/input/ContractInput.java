@@ -44,7 +44,7 @@ public class ContractInput extends AbstractInput {
 
         return Contract.builder()
             .id(UUID.randomUUID())
-            .idClient(contract.getIdClient())
+            .idClient(UUID.fromString(contract.getIdClient()))
             .vehicleRegistration(contract.getVehicleRegistration())
             .startDate(LocalDate.parse(contract.getStartDate(), formatter))
             .endDate(LocalDate.parse(contract.getEndDate(), formatter))

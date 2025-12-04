@@ -40,7 +40,7 @@ public class UpdatableProperty<T extends Serializable> implements Serializable {
         return this.isUpdated()
                 ? transform.apply(this.getValue())
                 : defaultValue;
-    } // TODO voir pk different du prof
+    }
 
     @Override
     public String toString(){

@@ -21,7 +21,7 @@ public class ContractOutput extends AbstractOutput {
     public static ContractOutput from(final Contract contract){
         return ContractOutput.builder()
                 .id(contract.getId().toString())
-                .idClient(contract.getIdClient())
+                .idClient(contract.getIdClient().toString())
                 .vehicleRegistration(contract.getVehicleRegistration())
                 .startDate(contract.getStartDate())
                 .endDate(contract.getEndDate())

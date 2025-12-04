@@ -21,7 +21,7 @@ public class ClientExistValidatorStep extends AbstractValidatorStep<Contract> {
         boolean clientExists = Objects
                 .requireNonNullElse(service.getAll(), Collections.<Client>emptySet())
                 .stream()
-                .anyMatch(client -> client.getId().toString().equals(toValidate.getIdClient()));
+                .anyMatch(client -> client.getId().equals(toValidate.getIdClient()));
 
         if (!clientExists) {
             throw new NotFoundException(String.format("Aucun client avec l'id %s n'existe en base", toValidate.getIdClient()));

@@ -11,15 +11,11 @@ import imt.archi.bfb.infra.db.contracts.repositories.entities.ContractEntity;
 @Service
 public class ContractDbMapper extends AbstractDbMapper<Contract, ContractEntity>{
 
-    // TODO : DOCS Singleton Mapper (gerer par Springboot)
-    // private VehicleBddMapper compteMapper;
-    // private ClientBddMapper compteMapper;
-
     @Override
     public Contract from(final ContractEntity input) {
         return Contract.builder()
             .id(UUID.fromString(input.getId()))
-            .idClient(input.getIdClient())
+            .idClient(UUID.fromString(input.getIdClient()))
             .vehicleRegistration(input.getVehicleRegistration())
             .startDate(input.getStartDate())
             .endDate(input.getEndDate())
@@ -31,7 +27,7 @@ public class ContractDbMapper extends AbstractDbMapper<Contract, ContractEntity>
     public ContractEntity to(final Contract object) {
         return ContractEntity.builder()
             .id(object.getId().toString())
-            .idClient(object.getIdClient())
+            .idClient(object.getIdClient().toString())
             .vehicleRegistration(object.getVehicleRegistration())
             .startDate(object.getStartDate())
             .endDate(object.getEndDate())
