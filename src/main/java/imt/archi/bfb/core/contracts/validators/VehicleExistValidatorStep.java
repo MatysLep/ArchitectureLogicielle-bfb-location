@@ -24,7 +24,7 @@ public class VehicleExistValidatorStep extends AbstractValidatorStep<Contract> {
                 .anyMatch(vehicle -> vehicle.getRegistration().equals(toValidate.getVehicleRegistration()));
 
         if (!clientExists) {
-            throw new NotFoundException(String.format("Aucun vehicule avec l'id %s n'existe en base", toValidate.getIdClient()));
+            throw new NotFoundException(String.format("Aucun vehicule avec la registration %s n'existe en base", toValidate.getVehicleRegistration()));
         }
     }
     
