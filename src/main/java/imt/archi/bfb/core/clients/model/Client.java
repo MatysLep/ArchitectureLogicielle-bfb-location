@@ -12,7 +12,6 @@ import lombok.*;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @EqualsAndHashCode
-
 @ToString
 public class Client {
     private static final String LICENCE_PATTERN = "^[0-9]{12}$";
